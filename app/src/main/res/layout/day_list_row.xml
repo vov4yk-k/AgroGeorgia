@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="18dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="date"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:layout_toRightOf="@id/day"
+            android:id="@+id/employee_name"
+            android:text="---"
+            android:gravity="center"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_toRightOf="@id/employee_name"
+            android:id="@+id/count_selected"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="10sp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

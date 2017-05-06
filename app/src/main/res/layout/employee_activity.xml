@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/top_relative"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:padding="10dp"
+                android:id="@+id/period_description"
+                android:text="some text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+            <Button
+                android:id="@+id/next_period_button"
+                android:background="@drawable/ic_next_month"
+                android:layout_alignParentEnd="true"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true" />
+
+            <Button
+                android:id="@+id/previous_period_button"
+                android:background="@drawable/ic_prevmonth"
+                android:layout_toLeftOf="@id/next_period_button"
+                android:layout_width="40dp"
+                android:layout_height="match_parent" />
+
+
+
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_below="@id/top_relative"
+            android:id="@+id/daysRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            >
+            <TextView
+                android:id="@+id/total_textView"
+                android:text="@string/total_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="40dp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

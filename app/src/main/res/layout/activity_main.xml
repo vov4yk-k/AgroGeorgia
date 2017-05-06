@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activities.MainActivity"
+    android:background="@drawable/foni2">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+
+
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btnPersonalManagement"
+            android:text="@string/personal_management"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/btnWorkEnd"
+            android:text="@string/work_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/btnPersonalInfo"
+            android:text="@string/personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+
+
+
+<!--
+
+        <Button
+            android:id="@+id/btnEmployees"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="@string/emploees"
+            android:layout_marginTop="@dimen/button_main_activity_margin"
+            android:layout_height="@dimen/button_main_activity_height"/>
+
+        <Button
+            android:id="@+id/btnWorks"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="@string/works"
+            android:layout_marginTop="@dimen/button_main_activity_margin"
+            android:layout_height="@dimen/button_main_activity_height"/>
+
+        <Button
+            android:id="@+id/btnLogWorks"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:text="@string/log_works"
+            android:layout_marginTop="@dimen/button_main_activity_margin"
+            android:layout_height="@dimen/button_main_activity_height"/>
+
+ -->
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

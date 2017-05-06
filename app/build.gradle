@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "ua.com.dev_club.agrogeorgia"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
+
+android {
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
+    compile files('libs/ksoap2-android-assembly-2.6.5-jar-with-dependencies.jar')
+    compile('com.squareup.retrofit:converter-simplexml:1.6.1') {
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+        exclude group: 'xpp3', module: 'xpp3'
+    }
+    compile 'com.github.satyan:sugar:1.4'
+    compile 'it.neokree:MaterialTabs:0.11'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile 'org.apache.httpcomponents:httpclient:4.5.3'
+    compile 'com.android.volley:volley:1.0.0'
+}

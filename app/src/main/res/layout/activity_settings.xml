@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:id="@+id/fields"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/url_textview"
+            android:text="Endpoint URL:"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <EditText
+
+            android:id="@+id/urlEditText"
+            android:hint="URL "
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+             />
+
+        <EditText
+
+            android:id="@+id/databaseEditText"
+            android:hint="Database name "
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            />
+
+        <EditText
+
+            android:id="@+id/adminUser_edittext"
+            android:hint="Admin user "
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            />
+
+        <EditText
+
+            android:id="@+id/adminPass_edittext"
+            android:hint="Admin password "
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPassword"
+            />
+
+    </LinearLayout>
+
+
+        <Button
+            android:id="@+id/save_preferences_button"
+            android:text="Save"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true" />
+
+
+
+
+
+
+
+
+</RelativeLayout>

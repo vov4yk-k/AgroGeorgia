@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="30dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/employee_name"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="employee_name"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:layout_toRightOf="@id/employee_name"
+            android:id="@+id/project_name"
+            android:text="project"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_toRightOf="@id/project_name"
+            android:id="@+id/work_name"
+            android:text="work_name"
+            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_toRightOf="@id/work_name"
+            android:id="@+id/hours_textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="0"
+            android:textSize="10sp"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

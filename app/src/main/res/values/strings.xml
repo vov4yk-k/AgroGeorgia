@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Georgia Agro</string>
+    <string name="action_settings">პარამეტრები</string>
+    <string name="username">მომხმარებელი</string>
+    <string name="password">პაროლი</string>
+    <string name="register">რეგისტრაცია</string>
+    <string name="log_in">შესვლა</string>
+    <string name="emploees">თანამშრომლები</string>
+    <string name="exit">გამოსვლა</string>
+    <string name="works">სამუშაოები</string>
+    <string name="log_works">სამუშაოს ხანგრძლივობა</string>
+    <string name="personal_management">პერსონალის განაწილება</string>
+    <string name="work_end">სამუშაოების დასრულება</string>
+    <string name="personal_info">პერსონალის ინფორმაცია</string>
+    <string name="ok">Ok</string>
+    <string name="select_project_name">აირჩიეთ მეურნეობა</string>
+    <string name="start_work_button">სამუშაოს დაწყება</string>
+
+    <string name="tab_by_date">თარიღით</string>
+    <string name="tab_by_layout">თანამშრომლით</string>
+    <string name="work_has_been_started">სამუშაო დაიწყო</string>
+    <string name="by_period">პერიოდით</string>
+    <string name="by_employee">თანამშრომლით</string>
+    <string name="by_chart">დიაგრამა</string>
+    <string name="rate">გამომუშავებული საათების მიხედვით</string>
+    <string name="info">უნდა შეიყვანოთ მონაცემები დიაგრამის დასაფორმირებლად</string>
+    <string name="total_hours">სულ:</string>
+    <string name="post_to_server">სამუშაოს დასრულება</string>
+</resources>

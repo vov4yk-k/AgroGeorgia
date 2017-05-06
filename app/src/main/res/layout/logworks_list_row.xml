@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root">
+
+    <TextView
+        android:id="@+id/work_name"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="Work name"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/quantity"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="1"
+        android:textStyle="bold|normal"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimaryText"
+        android:digits="0123456789"
+        android:minWidth="20dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+
+</LinearLayout>
