@@ -26,4 +26,5 @@
     <string name="info">უნდა შეიყვანოთ მონაცემები დიაგრამის დასაფორმირებლად</string>
     <string name="total_hours">სულ:</string>
     <string name="post_to_server">სამუშაოს დასრულება</string>
+    <string name="select_fixed_assets_name">ძირითადი საშუალებები</string>
 </resources>

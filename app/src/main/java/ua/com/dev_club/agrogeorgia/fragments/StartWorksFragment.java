@@ -41,6 +41,7 @@ import ua.com.dev_club.agrogeorgia.helpers.LogWorkHelper;
 import ua.com.dev_club.agrogeorgia.models.ComplexWork;
 import ua.com.dev_club.agrogeorgia.models.Employee;
 import ua.com.dev_club.agrogeorgia.models.EmployeeCheck;
+import ua.com.dev_club.agrogeorgia.models.FixedAssets;
 import ua.com.dev_club.agrogeorgia.models.Project;
 import ua.com.dev_club.agrogeorgia.models.Work;
 import ua.com.dev_club.agrogeorgia.utils.LocalCredentialStore;
@@ -56,6 +57,7 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
     CharSequence[] choice;
     Project currentProject;
     Work currentWork;
+    FixedAssets currentFixedAssets;
 
     private static ArrayList<Work> mWorkArrayList;
     private static ArrayList<EmployeeCheck> mEmployeeArrayList;
@@ -99,12 +101,14 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
             public void onClick(View v) {
                 if (currentWork==null)return;
                 if (currentProject==null)return;
+                if (currentFixedAssets==null) return;
 
                 for (EmployeeCheck employeeCheck:mEmployeeArrayList){
                     if (employeeCheck.getChecked()){
                         ComplexWork complexWork = new ComplexWork();
                         complexWork.setProject(currentProject);
                         complexWork.setWork(currentWork);
+                        complexWork.setFixedAssets(currentFixedAssets);
                         complexWork.setEmployee(employeeCheck.getEmployee());
                         complexWork.setHours(0d);
                         complexWork.setFinished(false);
@@ -171,6 +175,31 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //alert;
+                LoadFixedAssetsAsync loadFixedAssetsAsync = new LoadFixedAssetsAsync();
+                loadFixedAssetsAsync.execute();
+            }
+        });
+        alert.setCancelable(false);
+        alert.show();
+    }
+
+    public void showDialogAssets(List<FixedAssets> listItems){
+
+        List<String> items = new ArrayList<>();
+        for (FixedAssets fixedAssets:listItems) items.add(fixedAssets.getFixedAssetsName());
+
+        choice = items.toArray(new CharSequence[items.size()]);
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        alert.setTitle(R.string.select_fixed_assets_name);
+        alert.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                currentFixedAssets = listItems.get(which);
+            }
+        });
+        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 initControls();
             }
         });
@@ -468,6 +497,92 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
             Context mContext = getActivity();
             if (mContext!=null)
             showDialog(projects);
+
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+    }
+
+    class LoadFixedAssetsAsync extends AsyncTask<String, String, ArrayList<FixedAssets>> {
+
+        private Object readProperty(int index, SoapObject item){
+            PropertyInfo p = new PropertyInfo();
+            item.getPropertyInfo(index, p);
+            return p.getValue();
+        }
+
+
+
+        @Override
+        protected ArrayList<FixedAssets> doInBackground(String... params) {
+            try {
+
+                PropertyInfo projectPropertyInfo = new PropertyInfo();
+                projectPropertyInfo.name = "ProjectID";
+                projectPropertyInfo.type = String.class;
+                projectPropertyInfo.setValue(currentProject.getProjectID());
+
+                HttpTransportSE androidHttpTransport = new HttpTransportSE(localCredentialStore.getCommonUrl() + Constants.URL);
+
+                SoapObject customer = new SoapObject(Constants.NAMESPACE, Constants.METHOD_NAME_GET_FIXED_ASSETS);
+                customer.addProperty(projectPropertyInfo);
+
+                List<HeaderProperty> headerList = new ArrayList<HeaderProperty>();
+                headerList.add(new HeaderProperty("Authorization", "Basic " + org.kobjects.base64.Base64.encode( localCredentialStore.getCredentials().getBytes())));
+
+                SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+                envelope.dotNet = true;
+                envelope.encodingStyle = SoapEnvelope.ENC;
+                envelope.setAddAdornments(false);
+                envelope.implicitTypes = false;
+
+                envelope.setOutputSoapObject(customer);
+                androidHttpTransport.call(localCredentialStore.getCommonUrl() + Constants.GET_FIXED_ASSETS_SOAP_ACTION, envelope, headerList);
+
+                SoapObject result = (SoapObject) envelope.getResponse();
+
+                ArrayList<FixedAssets> fixeddAssetsArrayList = new ArrayList<>();
+
+                for(int i=0;i<result.getPropertyCount();i++) {
+                    Object property = result.getProperty(i);
+                    if (property instanceof SoapObject) {
+                        SoapObject final_object = (SoapObject) property;
+                        FixedAssets fixedAssets = new FixedAssets();
+                        fixedAssets.setFixedAssetsID(final_object.getProperty("FixedAssetsID").toString());
+                        fixedAssets.setFixedAssetsName(final_object.getProperty("FixedAssetsName").toString());
+
+                       List<FixedAssets> findFixedAssets = FixedAssets.findWithQuery(FixedAssets.class, "SELECT * FROM FIXED_ASSETS WHERE FIXED_ASSETS_ID = ?", fixedAssets.getFixedAssetsID());
+                       if (findFixedAssets.size()==0) {
+                           fixedAssets.save();
+                       } else {
+                           fixedAssets = findFixedAssets.get(0);
+                       }
+
+                        fixedAssets.save();
+
+                        fixeddAssetsArrayList.add(fixedAssets);
+                    }
+                }
+
+                return fixeddAssetsArrayList;
+
+            }catch (Exception ignored){
+                ignored.printStackTrace();
+            }
+            return new ArrayList<>();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<FixedAssets> fixedAssets) {
+            super.onPostExecute(fixedAssets);
+            if (fixedAssets.size()==0)return;
+
+            Context mContext = getActivity();
+            if (mContext!=null)
+                showDialogAssets(fixedAssets);
 
         }
 

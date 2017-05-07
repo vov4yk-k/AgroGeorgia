@@ -44,4 +44,9 @@ public class Constants {
 
     public final static String METHOD_NAME_POST_WORKS = "LogWork";
 
+    // FixedAssets
+    public final static String GET_FIXED_ASSETS_SOAP_ACTION = HOSTNAME + "ws/DirectOneWorkLog.1cws/GetFixedAssets";
+
+    public final static String METHOD_NAME_GET_FIXED_ASSETS = "GetFixedAssets";
+
 }

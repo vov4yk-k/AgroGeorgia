@@ -7,6 +7,7 @@ import com.orm.SugarRecord;
  */
 public class ComplexWork extends SugarRecord {
     Project project;
+    FixedAssets fixedAssets;
     Work work;
     Employee employee;
     String date;
@@ -19,13 +20,14 @@ public class ComplexWork extends SugarRecord {
     public ComplexWork() {
     }
 
-    public ComplexWork(String date, Employee employee, Boolean finished, Double hours, Project project, Work work) {
+    public ComplexWork(String date, Employee employee, Boolean finished, Double hours, Project project, Work work, FixedAssets fixedAssets) {
         this.date = date;
         this.employee = employee;
         this.finished = finished;
         this.hours = hours;
         this.project = project;
         this.work = work;
+        this.fixedAssets = fixedAssets;
     }
 
 
@@ -102,5 +104,13 @@ public class ComplexWork extends SugarRecord {
 
     public void setYear(Integer year) {
         this.year = year;
+    }
+
+    public FixedAssets getFixedAssets() {
+        return fixedAssets;
+    }
+
+    public void setFixedAssets(FixedAssets fixedAssets) {
+        this.fixedAssets = fixedAssets;
     }
 }
