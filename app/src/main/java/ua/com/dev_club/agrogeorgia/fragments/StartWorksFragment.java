@@ -2,6 +2,7 @@ package ua.com.dev_club.agrogeorgia.fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ua.com.dev_club.agrogeorgia.R;
+import ua.com.dev_club.agrogeorgia.activities.MainActivity;
 import ua.com.dev_club.agrogeorgia.activities.WorksActivity;
 import ua.com.dev_club.agrogeorgia.adapters.EmployeesAdapter;
 import ua.com.dev_club.agrogeorgia.adapters.WorksAdapter;
@@ -179,7 +182,14 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
                 loadFixedAssetsAsync.execute();
             }
         });
-        alert.setCancelable(false);
+        alert.setCancelable(true);
+        alert.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                getActivity().finish();
+            }
+        });
         alert.show();
     }
 
@@ -514,8 +524,6 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
             return p.getValue();
         }
 
-
-
         @Override
         protected ArrayList<FixedAssets> doInBackground(String... params) {
             try {
@@ -578,7 +586,15 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
         @Override
         protected void onPostExecute(ArrayList<FixedAssets> fixedAssets) {
             super.onPostExecute(fixedAssets);
-            if (fixedAssets.size()==0)return;
+            if (fixedAssets.size()==0){
+                Toast toast = Toast.makeText(getContext().getApplicationContext(),
+                        R.string.no_fixed_assets, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                LoadProjectsAsync loadProjectsAsync = new LoadProjectsAsync();
+                loadProjectsAsync.execute();
+                return;
+            }
 
             Context mContext = getActivity();
             if (mContext!=null)

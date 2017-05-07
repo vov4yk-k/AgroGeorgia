@@ -16,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -538,7 +539,14 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
                 loadFixedAssetsAsync.execute();
             }
         });
-        alert.setCancelable(false);
+        alert.setCancelable(true);
+        alert.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                getActivity().finish();
+            }
+        });
         alert.show();
     }
 
@@ -548,8 +556,6 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
         for (FixedAssets fixedAssets:listItems) items.add(fixedAssets.getFixedAssetsName());
 
         choice = items.toArray(new CharSequence[items.size()]);
-
-
 
         AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
         alert.setTitle(R.string.select_fixed_assets_name);
@@ -679,7 +685,6 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
         @Override
         protected ArrayList<FixedAssets> doInBackground(String... params) {
             try {
-
                 PropertyInfo projectPropertyInfo = new PropertyInfo();
                 projectPropertyInfo.name = "ProjectID";
                 projectPropertyInfo.type = String.class;
@@ -739,7 +744,15 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
         @Override
         protected void onPostExecute(ArrayList<FixedAssets> fixedAssets) {
             super.onPostExecute(fixedAssets);
-            if (fixedAssets.size()==0)return;
+            if (fixedAssets.size()==0){
+                Toast toast = Toast.makeText(getContext().getApplicationContext(),
+                        R.string.no_fixed_assets, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                LoadProjectsAsync loadProjectsAsync = new LoadProjectsAsync();
+                loadProjectsAsync.execute();
+                return;
+            }
 
             mContext = getActivity() ;
             if (mContext!=null)
