@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark">
 
     <android.support.v7.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchView"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal|top"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
 
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="@color/colorBackgroundDark"
+
+        >
 
         <Button
             android:id="@+id/startWorkButton"
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:text="@string/start_work_button"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="3dp"
+            tools:ignore="RtlHardcoded" />
 
         <Spinner
             android:layout_toRightOf="@id/startWorkButton"
@@ -28,14 +42,22 @@
             android:layout_width="200dp"
             android:layout_height="match_parent"
             android:layout_gravity="top"
-            />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:background="@drawable/rounded_spinner"
+            android:popupBackground="@color/colorBackgroundDark"
+            tools:ignore="RtlHardcoded" />
 
         <CheckBox
             android:id="@+id/check"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
 
     </RelativeLayout>
@@ -44,6 +66,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/employeeChooseRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

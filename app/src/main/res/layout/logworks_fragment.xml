@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark">
 
     <android.support.v7.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchView"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal|top"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
 
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        >
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btnPostWork"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:text="@string/post_to_server"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="10dp"
             />
 
         <CheckBox
@@ -27,23 +38,31 @@
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="50dp"
+        android:background="@color/colorBackgroundDark"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingTop="10dp">
 
             <Spinner
                 android:id="@+id/hoursSpinner"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_gravity="top"
+                android:background="@drawable/rounded_spinner"
+                android:popupBackground="@color/colorBackgroundDark"
                 />
 
             <EditText
@@ -51,17 +70,21 @@
                 android:inputType="numberDecimal"
                 android:id="@+id/quantity_EditText"
                 android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:visibility="gone"
-                />
+                android:textColor="@color/colorBackground"
+                tools:ignore="RtlHardcoded" />
 
             <Spinner
                 android:layout_toRightOf="@id/quantity_EditText"
                 android:id="@+id/worksSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_gravity="top"
-                />
+                android:background="@drawable/rounded_spinner"
+                android:popupBackground="@color/colorBackgroundDark"
+                android:layout_marginLeft="5dp"
+                tools:ignore="RtlHardcoded,RtlSymmetry" />
 
         </RelativeLayout>
 
@@ -69,7 +92,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBackgroundDark">
 
         <!-- A RecyclerView with some commonly used attributes -->
         <android.support.v7.widget.RecyclerView

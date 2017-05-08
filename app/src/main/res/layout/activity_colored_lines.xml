@@ -3,12 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorBackgroundDark"
     android:layout_margin="10dp">
 
     <com.github.mikephil.charting.charts.LineChart
         android:padding="20dp"
         android:id="@+id/chart1"
         android:layout_weight="1"
+        android:background="@color/colorBackgroundDark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <!--

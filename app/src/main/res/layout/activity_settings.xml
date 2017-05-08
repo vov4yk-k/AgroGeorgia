@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark">
 
     <LinearLayout
 
@@ -14,7 +15,8 @@
             android:id="@+id/url_textview"
             android:text="Endpoint URL:"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:textColor="@color/colorBackground"/>
 
         <EditText
 
@@ -22,6 +24,9 @@
             android:hint="URL "
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
              />
 
         <EditText
@@ -30,6 +35,9 @@
             android:hint="Database name "
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
             />
 
         <EditText
@@ -39,6 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:inputType="textPassword"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
             />
 
         <EditText
@@ -48,6 +59,9 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:inputType="textPassword"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
             />
 
     </LinearLayout>
@@ -58,7 +72,8 @@
             android:text="Save"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/rounded_button"/>
 
 
 

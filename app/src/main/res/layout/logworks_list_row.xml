@@ -3,7 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/root">
+    android:id="@+id/root"
+    android:background="@drawable/rounded_button">
 
     <TextView
         android:id="@+id/work_name"
@@ -11,7 +12,8 @@
         android:layout_height="60dp"
         android:text="Work name"
         android:layout_gravity="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/colorPrimaryText"/>
 
     <EditText
         android:id="@+id/quantity"

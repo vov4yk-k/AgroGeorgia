@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +20,8 @@
                 android:text="some text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical"
+                android:textColor="@color/colorBackground"/>
 
             <Button
                 android:id="@+id/next_period_button"
@@ -27,7 +29,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                />
 
             <Button
                 android:id="@+id/previous_period_button"
@@ -46,7 +49,8 @@
             android:id="@+id/projectsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="20dp">
+            android:paddingBottom="20dp"
+           >
 
         </android.support.v7.widget.RecyclerView>
 
@@ -60,6 +64,7 @@
             <TextView
                 android:id="@+id/total_textView"
                 android:text="@string/total_hours"
+                android:textColor="@color/colorBackground"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"

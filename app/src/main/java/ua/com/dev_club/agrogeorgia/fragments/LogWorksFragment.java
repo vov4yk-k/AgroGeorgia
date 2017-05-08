@@ -518,7 +518,7 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
 
 
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+        AlertDialog.Builder alert = new AlertDialog.Builder(mContext,R.style.DialogTheme);
         alert.setTitle(R.string.select_project_name);
         alert.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
             @Override
@@ -557,7 +557,7 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
 
         choice = items.toArray(new CharSequence[items.size()]);
 
-        AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+        AlertDialog.Builder alert = new AlertDialog.Builder(mContext,R.style.DialogTheme);
         alert.setTitle(R.string.select_fixed_assets_name);
         alert.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
             @Override
@@ -583,8 +583,8 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
     private void initControls() {
 
         hoursSpinner = (Spinner)mRootView.findViewById(R.id.hoursSpinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, hours);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, hours);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
         hoursSpinner.setAdapter(adapter);
         hoursSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -601,8 +601,8 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
 
         worksSpinner = (Spinner)mRootView.findViewById(R.id.worksSpinner);
         List<Work> works = Work.listAll(Work.class);
-        ArrayAdapter<Work> worksAdapter = new ArrayAdapter<Work>(getActivity(), android.R.layout.simple_spinner_dropdown_item, works);
-        worksAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<Work> worksAdapter = new ArrayAdapter<Work>(getActivity(), R.layout.spinner_item, works);
+        worksAdapter.setDropDownViewResource(R.layout.spinner_item);
         worksSpinner.setAdapter(worksAdapter);
         worksSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

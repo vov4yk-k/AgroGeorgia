@@ -166,7 +166,7 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
         for (Project project:listItems) items.add(project.getProjectName());
 
         choice = items.toArray(new CharSequence[items.size()]);
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity(),R.style.DialogTheme);
         alert.setTitle(R.string.select_project_name);
         alert.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
             @Override
@@ -182,6 +182,7 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
                 loadFixedAssetsAsync.execute();
             }
         });
+
         alert.setCancelable(true);
         alert.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
@@ -199,7 +200,7 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
         for (FixedAssets fixedAssets:listItems) items.add(fixedAssets.getFixedAssetsName());
 
         choice = items.toArray(new CharSequence[items.size()]);
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity(),R.style.DialogTheme);
         alert.setTitle(R.string.select_fixed_assets_name);
         alert.setSingleChoiceItems(choice, -1, new DialogInterface.OnClickListener() {
             @Override
@@ -313,9 +314,9 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
 
             if (mWorkArrayList==null) return;
 
-            ArrayAdapter<Work> adapter = new ArrayAdapter<Work>(getActivity(), android.R.layout.simple_spinner_dropdown_item, mWorkArrayList);
+            ArrayAdapter<Work> adapter = new ArrayAdapter<Work>(getActivity(), R.layout.spinner_item, mWorkArrayList);
 
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            adapter.setDropDownViewResource(R.layout.spinner_item);
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

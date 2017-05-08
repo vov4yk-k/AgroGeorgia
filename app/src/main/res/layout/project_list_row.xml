@@ -5,7 +5,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
 
         <TextView
             android:id="@+id/employee_name"
@@ -14,6 +15,7 @@
             android:gravity="center"
             android:text="employee_name"
             android:textSize="10sp"
+            android:textColor="@color/colorPrimaryText"
             />
 
         <TextView
@@ -23,7 +25,8 @@
             android:gravity="center"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            android:textColor="@color/colorPrimaryText"/>
 
         <TextView
             android:layout_toRightOf="@id/project_name"
@@ -32,7 +35,8 @@
             android:gravity="center"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            android:textColor="@color/colorPrimaryText"/>
 
         <TextView
             android:layout_toRightOf="@id/work_name"
@@ -41,7 +45,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="0"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            android:textColor="@color/colorPrimaryText"/>
 
     </RelativeLayout>
 
