@@ -569,7 +569,7 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
                            fixedAssets = findFixedAssets.get(0);
                        }
 
-                        fixedAssets.save();
+                        //fixedAssets.save();
 
                         fixeddAssetsArrayList.add(fixedAssets);
                     }

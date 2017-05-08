@@ -127,7 +127,7 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
 
     public void updateRecyclerView(){
 
-        mComplexWorkArrayList = ComplexWork.findWithQuery(ComplexWork.class, "Select * from Complex_work where finished=0 and Work=? and Project=?", currentWork.getId().toString(), currentProject.getId().toString() );
+        mComplexWorkArrayList = ComplexWork.findWithQuery(ComplexWork.class, "Select * from Complex_work where finished=0 and Work=? and Project=? and fixed_Assets=?", currentWork.getId().toString(), currentProject.getId().toString(),currentFixedAssets.getId().toString());
 
         if (complexWorkAdapter==null)initAdapter();
 
@@ -722,12 +722,11 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
                         List<FixedAssets> findFixedAssets = FixedAssets.findWithQuery(FixedAssets.class, "SELECT * FROM FIXED_ASSETS WHERE FIXED_ASSETS_ID = ?", fixedAssets.getFixedAssetsID());
                         if (findFixedAssets.size()==0) {
                             fixedAssets.save();
-
                         } else {
                             fixedAssets = findFixedAssets.get(0);
                         }
 
-                        fixedAssets.save();
+                        //fixedAssets.save();
 
                         fixedAssetsArrayList.add(fixedAssets);
                     }
