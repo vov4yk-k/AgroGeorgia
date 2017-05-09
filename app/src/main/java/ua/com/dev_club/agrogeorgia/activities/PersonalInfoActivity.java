@@ -80,10 +80,13 @@ public class PersonalInfoActivity extends AppCompatActivity  {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, monthList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         monthSpinner.setAdapter(adapter);
+        setCurrentDateForSpinner(adapter,monthSpinner,Calendar.MONTH);
         monthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 currentMonth = monthList[position];
+                tabByDateFragment.updateAdapter(yearSpinner.getSelectedItem().toString(), monthSpinner.getSelectedItem().toString());
+                tabByEmployeeFragment.updateAdapter(yearSpinner.getSelectedItem().toString(), monthSpinner.getSelectedItem().toString(), getFragmentQuery());
             }
 
             @Override
@@ -100,6 +103,7 @@ public class PersonalInfoActivity extends AppCompatActivity  {
 
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         yearSpinner.setAdapter(yearAdapter);
+        setCurrentDateForSpinner(yearAdapter,yearSpinner,Calendar.YEAR);
         yearSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -112,15 +116,15 @@ public class PersonalInfoActivity extends AppCompatActivity  {
             }
         });
 
-        applyFilterButton = (Button) findViewById(R.id.apply_filter);
-        applyFilterButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tabByDateFragment.updateAdapter(yearSpinner.getSelectedItem().toString(), monthSpinner.getSelectedItem().toString());
-                tabByEmployeeFragment.updateAdapter(yearSpinner.getSelectedItem().toString(), monthSpinner.getSelectedItem().toString(), getFragmentQuery());
-            }
-        });
 
+    }
+
+    private void setCurrentDateForSpinner(ArrayAdapter<String> adapter, Spinner spinner, int partDate){
+        Calendar rightNow = Calendar.getInstance();
+        int currentPartOfDate = rightNow.get(partDate);
+        currentPartOfDate += partDate == Calendar.MONTH ? 1 : 0;
+        int currentPosition = adapter.getPosition(String.valueOf(currentPartOfDate));
+        spinner.setSelection(currentPosition);
     }
 
     public String[] prepareYears(){
