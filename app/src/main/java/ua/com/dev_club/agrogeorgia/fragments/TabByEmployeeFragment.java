@@ -84,7 +84,7 @@ public class TabByEmployeeFragment extends Fragment implements SearchView.OnQuer
         Total total = new Total();
 
         for (ComplexWork complexWork:complexWorkList){
-            total.addItem(new ComplexWorkItem(complexWork, complexWork.getHours(), true));
+           total.addItem(new ComplexWorkItem(complexWork, complexWork.getHours(), true));
         }
 
         tabCalenderAdapter = new TabEmployeeAdapter(total, getActivity());

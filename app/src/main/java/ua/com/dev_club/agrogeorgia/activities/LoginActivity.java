@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -74,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     String username;
     String password;
     Boolean isAuthorized = false;
-
+    Boolean rememberMe;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,8 +85,6 @@ public class LoginActivity extends AppCompatActivity {
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
         localCredentialStore = new LocalCredentialStore(prefs);
         //localCredentialStore.clear();
-
-
 
         /*if (!getCredentials().equals(":")){
 
@@ -111,6 +111,20 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = (EditText) findViewById(R.id.user);
         passwordEditText = (EditText) findViewById(R.id.pwd);
 
+        //SharedPreferences settings = getPreferences(0);
+        rememberMe = this.prefs.getBoolean("RememberMe", false);
+        username = this.prefs.getString("Login","");
+        password = this.prefs.getString("Password","");
+        CheckBox rememberMeChBx = (CheckBox)findViewById(R.id.rememberMeChBx);
+        rememberMeChBx.setChecked(rememberMe);
+        rememberMeChBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                rememberMe = b;
+            }
+        });
+        usernameEditText.setText(username);
+        passwordEditText.setText(password);
     }
 
     public void startSettingsActivity(){
@@ -476,6 +490,14 @@ public class LoginActivity extends AppCompatActivity {
             //localCredentialStore.store(username, password);
             localCredentialStore.storeUserIsAdmin(user.getUserIsAdmin());
 
+            if(rememberMe){
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("Login", username);
+                editor.putString("Password", password);
+                editor.putBoolean("RememberMe",rememberMe);
+                editor.commit();
+            }
+
             finish();
         }
 
@@ -528,5 +550,16 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(rememberMe){
+            //SharedPreferences settings = getPreferences(0);
+            SharedPreferences.Editor editor = this.prefs.edit();
+            editor.putString("Login", username);
+            editor.putString("Password", password);
+            editor.putBoolean("RememberMe",rememberMe);
+            editor.commit();
+        }
+    }
 }

@@ -85,7 +85,7 @@ public class TabByDateFragment extends Fragment {
 
         Total total = new Total();
         for (ComplexWork complexWork:complexWorkList){
-            total.addItem(new ComplexWorkItem(complexWork, complexWork.getHours()));
+           total.addItem(new ComplexWorkItem(complexWork, complexWork.getHours()));
         }
 
         tabCalenderAdapter = new TabCalenderAdapter(total, getActivity());

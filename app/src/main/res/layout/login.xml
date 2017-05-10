@@ -43,7 +43,7 @@
             android:id="@+id/pwd"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:drawableLeft="@drawable/ic_pwd"
             android:hint="@string/password"
@@ -51,7 +51,19 @@
             android:textColor="@color/colorBackground"
             android:textColorHighlight="@color/colorBackground"
             android:textColorHint="@color/colorBackground"
-            android:textAlignment="center"></EditText>
+            android:textAlignment="center"
+            ></EditText>
+
+        <CheckBox
+            android:id="@+id/rememberMeChBx"
+            android:layout_width="250dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/remember_me"
+            android:textColor="@color/colorBackground"
+            android:textAlignment="center"
+            android:buttonTint="@color/colorBackground"
+            />
 
         <LinearLayout
             android:id="@+id/main"
