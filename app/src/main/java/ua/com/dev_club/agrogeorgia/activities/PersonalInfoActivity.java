@@ -75,7 +75,28 @@ public class PersonalInfoActivity extends AppCompatActivity  {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                String tabName = tab.getText().toString();
+                if(tabName.equals(getString(R.string.by_employee))){
+                    findViewById(R.id.tabByDateRecyclerView).setVisibility(View.GONE);
+                }else {
+                    findViewById(R.id.tabByDateRecyclerView).setVisibility(View.VISIBLE);
+                }
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
         monthSpinner = (Spinner)findViewById(R.id.monthSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, monthList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
