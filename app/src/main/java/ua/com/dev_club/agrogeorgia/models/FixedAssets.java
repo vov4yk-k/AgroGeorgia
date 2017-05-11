@@ -32,4 +32,16 @@ public class FixedAssets extends SugarRecord {
     public void setFixedAssetsName(String fixedAssetsName) {
         FixedAssetsName = fixedAssetsName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o==null) return false;
+        FixedAssets fixedAssetObject = (FixedAssets) o;
+        return FixedAssetsID.equals(fixedAssetObject.FixedAssetsID);
+    }
+
+    @Override
+    public int hashCode() {
+        return FixedAssetsID.hashCode();
+    }
 }

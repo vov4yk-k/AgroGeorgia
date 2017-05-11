@@ -32,4 +32,16 @@ public class Project extends SugarRecord{
     public void setProjectName(String projectName) {
         ProjectName = projectName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o==null) return false;
+        Project projecttObject = (Project) o;
+        return ProjectID.equals(projecttObject.getProjectID());
+    }
+
+    @Override
+    public int hashCode() {
+        return getProjectID().hashCode();
+    }
 }
