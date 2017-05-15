@@ -2,6 +2,8 @@ package ua.com.dev_club.agrogeorgia.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.orm.SugarDb;
 import com.orm.SugarRecord;
 
 import java.util.ArrayList;
@@ -39,6 +42,9 @@ import ua.com.dev_club.agrogeorgia.models.Work;
 import ua.com.dev_club.agrogeorgia.adapters.TreeEmployeeInfoList.FixedAssetLevel.WorkLevel.EmployeeLevel;
 import ua.com.dev_club.agrogeorgia.adapters.TreeEmployeeInfoList.FixedAssetLevel;
 import ua.com.dev_club.agrogeorgia.adapters.TreeEmployeeInfoList.FixedAssetLevel.WorkLevel;
+
+import static com.orm.SugarContext.getSugarContext;
+
 /**
  * Created by 1cspe on 26.04.2016.
  */
@@ -133,12 +139,11 @@ public class TabByEmployeeFragment extends Fragment implements SearchView.OnQuer
             worksSet.add(complexWork.getWork());
         }
 
+
         ArrayList<TreeEmployeeInfoList>projectArrayList=new ArrayList<TreeEmployeeInfoList>();;
         for (Project project:projectsSet){
-            if(fixedAssetsSet.isEmpty()) continue;
             ArrayList<FixedAssetLevel> fixedAssetsArrayList=new ArrayList<FixedAssetLevel>();
             for (FixedAssets fixedAssets: fixedAssetsSet){
-                if(worksSet.isEmpty()) continue;
                 ArrayList<WorkLevel> workArrayList=new ArrayList<WorkLevel>();
                 for(Work work:worksSet){
                     List<ComplexWork> complexWorkListEmployee = ComplexWork.findWithQuery(ComplexWork.class, "Select * from Complex_work where finished=1 and Project=? and fixed_Assets=? and work=? and year=? and month=?", project.getId().toString(),fixedAssets.getId().toString(),work.getId().toString(),String.valueOf(year),String.valueOf(Integer.valueOf(month)));
@@ -150,8 +155,10 @@ public class TabByEmployeeFragment extends Fragment implements SearchView.OnQuer
                     if(employeeArrayList.isEmpty()) continue;
                     workArrayList.add(new WorkLevel(work.getWorkName(), employeeArrayList));
                 }
+                if(workArrayList.isEmpty()) continue;
                 fixedAssetsArrayList.add(new FixedAssetLevel(fixedAssets.getFixedAssetsName(), workArrayList));
             }
+            if(fixedAssetsArrayList.isEmpty()) continue;
             projectArrayList.add(new TreeEmployeeInfoList(project.getProjectName(), fixedAssetsArrayList));
         }
 
@@ -336,6 +343,8 @@ public class TabByEmployeeFragment extends Fragment implements SearchView.OnQuer
             mLinearListView.addView(mLinearView);
         }
     }
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

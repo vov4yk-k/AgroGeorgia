@@ -66,7 +66,7 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
     Context context;
     View mRootView;
 
-    String[] hours = {"2", "4", "6", "8", "10", "12", "14", "16"};
+    String[] hours;
     String fragmentQuery;
 
     private Spinner hoursSpinner, worksSpinner;
@@ -100,6 +100,8 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
 
     Context mContext;
 
+    private final int HOURS_LIMIT = 24;
+
     SharedPreferences prefs;
     LocalCredentialStore localCredentialStore;
 
@@ -109,6 +111,8 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
 
         this.prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         localCredentialStore = new LocalCredentialStore(prefs);
+
+        setHours();
 
         LoadProjectsAsync loadProjectsAsync = new LoadProjectsAsync();
         loadProjectsAsync.execute();
@@ -762,6 +766,13 @@ public class LogWorksFragment extends Fragment implements SearchView.OnQueryText
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+        }
+    }
+
+    private void setHours(){
+        hours = new String[HOURS_LIMIT];
+        for(int i = 0, hour = 1; i<HOURS_LIMIT; i++, hour++){
+            hours[i] = String.valueOf(hour);
         }
     }
 }

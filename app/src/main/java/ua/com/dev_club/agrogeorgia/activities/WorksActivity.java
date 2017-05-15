@@ -49,15 +49,10 @@ public class WorksActivity extends AppCompatActivity{
         exit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startLoginActivity();
+               finish();
             }
         });
 
-    }
-
-    public void startLoginActivity(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivityForResult(intent, 1);
     }
 
     private void openFragment(final Fragment fragment){
