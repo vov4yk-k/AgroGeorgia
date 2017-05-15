@@ -108,6 +108,7 @@ public class TabByEmployeeFragment extends Fragment implements SearchView.OnQuer
 
 
         calenderRecyclerView.setAdapter(tabCalenderAdapter);
+        calenderRecyclerView.setVisibility(View.GONE);
 
 
         tabCalenderAdapter.notifyDataSetChanged();
