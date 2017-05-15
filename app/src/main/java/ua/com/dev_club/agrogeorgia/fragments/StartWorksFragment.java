@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ua.com.dev_club.agrogeorgia.R;
+import ua.com.dev_club.agrogeorgia.activities.LoginActivity;
 import ua.com.dev_club.agrogeorgia.activities.MainActivity;
 import ua.com.dev_club.agrogeorgia.activities.WorksActivity;
 import ua.com.dev_club.agrogeorgia.adapters.EmployeesAdapter;
@@ -78,6 +80,7 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
     SharedPreferences prefs;
     LocalCredentialStore localCredentialStore;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -92,9 +95,9 @@ public class StartWorksFragment extends Fragment implements SearchView.OnQueryTe
 
         mRootView = inflater.inflate(R.layout.new_start_work, container, false);
 
-
         return mRootView;
     }
+
 
     public void initControls(){
 
