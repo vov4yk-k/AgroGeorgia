@@ -112,9 +112,13 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.pwd);
 
         //SharedPreferences settings = getPreferences(0);
-        rememberMe = this.prefs.getBoolean("RememberMe", false);
-        username = this.prefs.getString("Login","");
-        password = this.prefs.getString("Password","");
+        //rememberMe = this.prefs.getBoolean("RememberMe", false);
+        //username = this.prefs.getString("Login","");
+        //password = this.prefs.getString("Password","");
+        rememberMe = localCredentialStore.getRememberMe();
+        username = localCredentialStore.getUserLogin();
+        password = localCredentialStore.getUserPassword();
+
         CheckBox rememberMeChBx = (CheckBox)findViewById(R.id.rememberMeChBx);
         rememberMeChBx.setChecked(rememberMe);
         rememberMeChBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -417,6 +421,7 @@ public class LoginActivity extends AppCompatActivity {
                         user.setUserID(final_object.getProperty("UserID").toString());
                         user.setUserName(final_object.getProperty("UserName").toString());
                         user.setUserIsAdmin(Boolean.valueOf(final_object.getProperty("UserIsAdmin").toString()));
+                        user.setCreatingEmployee(Boolean.valueOf(final_object.getProperty("CreatingEmployee").toString()));
 
                         if (user.getUserName().equals(username))  return user;
 
@@ -462,6 +467,7 @@ public class LoginActivity extends AppCompatActivity {
                         user.setUserID(final_object.getProperty("UserID").toString());
                         user.setUserName(final_object.getProperty("UserName").toString());
                         user.setUserIsAdmin(Boolean.valueOf(final_object.getProperty("UserIsAdmin").toString()));
+                        user.setCreatingEmployee(Boolean.valueOf(final_object.getProperty("CreatingEmployee").toString()));
 
                         if (user.getUserName().equals(username))  return user;
 
@@ -489,14 +495,10 @@ public class LoginActivity extends AppCompatActivity {
 
             //localCredentialStore.store(username, password);
             localCredentialStore.storeUserIsAdmin(user.getUserIsAdmin());
+            localCredentialStore.storeCreatingEmployee(user.getCreatingEmployee());
 
-            if(rememberMe){
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("Login", username);
-                editor.putString("Password", password);
-                editor.putBoolean("RememberMe",rememberMe);
-                editor.commit();
-            }
+            localCredentialStore.setRememberMe(rememberMe);
+            localCredentialStore.storeUserCredentials(username,password);
 
             finish();
         }
@@ -553,13 +555,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
-        if(rememberMe){
-            //SharedPreferences settings = getPreferences(0);
-            SharedPreferences.Editor editor = this.prefs.edit();
-            editor.putString("Login", username);
-            editor.putString("Password", password);
-            editor.putBoolean("RememberMe",rememberMe);
-            editor.commit();
-        }
+        localCredentialStore.setRememberMe(rememberMe);
+        localCredentialStore.storeUserCredentials(username,password);
     }
 }

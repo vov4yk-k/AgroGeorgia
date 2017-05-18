@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundDark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text="@string/employee_name"
+            android:textColor="@color/colorBackground"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/new_employee_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
+            android:textCursorDrawable="@null"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/employee_surname"
+            android:textColor="@color/colorBackground"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/new_employee_surname"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/employee_number"
+            android:textColor="@color/colorBackground"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/new_employee_number"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded"
+            android:inputType="numberSigned"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
+            android:maxLength="11"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/employee_hiring_date"
+            android:textColor="@color/colorBackground"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/new_employee_hiring_date"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded"
+            android:inputType="date"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
+            android:textCursorDrawable="@color/colorBackground" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/employee_bank_account"
+            android:textColor="@color/colorBackground"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/new_employee_bank_account"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded"
+            android:inputType="textFilter"
+            android:textColor="@color/colorBackground"
+            android:textColorHighlight="@color/colorBackground"
+            android:textColorHint="@color/colorBackground"
+            android:maxLength="23"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqr‌​stuvwxyz0123456789"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/create_employee"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:text="Save"
+        android:background="@drawable/rounded_button"
+        android:layout_marginBottom="10dp"/>
+    <!-- </RelativeLayout>-->
+
+</RelativeLayout>

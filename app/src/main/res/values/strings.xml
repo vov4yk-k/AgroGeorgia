@@ -29,4 +29,10 @@
     <string name="select_fixed_assets_name">ძირითადი საშუალებები</string>
     <string name="no_fixed_assets">В проекте нет ОС!</string>
     <string name="remember_me">პაროლის დამახსოვრება</string>
+
+    <string name="employee_name">სახელი:</string>
+    <string name="employee_surname">გვარი:</string>
+    <string name="employee_number">პირადი ნომერი:</string>
+    <string name="employee_hiring_date">სამსახურში აყვანის თარიღი:</string>
+    <string name="employee_bank_account">საბანკო ანგარიში</string>
 </resources>

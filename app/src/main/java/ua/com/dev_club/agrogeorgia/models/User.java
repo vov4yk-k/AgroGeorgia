@@ -7,6 +7,7 @@ public class User {
     String userID;
     String userName;
     Boolean userIsAdmin;
+    Boolean creatingEmployee;
 
     public String getUserID() {
         return userID;
@@ -30,5 +31,13 @@ public class User {
 
     public void setUserIsAdmin(Boolean userIsAdmin) {
         this.userIsAdmin = userIsAdmin;
+    }
+
+    public Boolean getCreatingEmployee() {
+        return creatingEmployee;
+    }
+
+    public void setCreatingEmployee(Boolean creatingEmployee) {
+        this.creatingEmployee = creatingEmployee;
     }
 }

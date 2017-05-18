@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button employeesButton, worksButton, logWorksButton;
     Button personalManagementButton, btnPersonalInfo;
-
+    ImageButton btnCreateEmployee;
     ImageView exit_button;
 
 
@@ -107,7 +107,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        setPersonalInfoVisibility();
+        btnCreateEmployee = (ImageButton) findViewById(R.id.btnCreateEmployee);
+        btnCreateEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnCreateEmployee.startAnimation(pressAnimation);
+                startNewEmployeeActivity();
+            }
+        });
+
+        setVisibilities();
 
     }
 
@@ -163,26 +172,43 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startNewEmployeeActivity(){
+        Intent intent = new Intent(this, NewEmployeeActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        setPersonalInfoVisibility();
+        setVisibilities();
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
 
-        setPersonalInfoVisibility();
+        setVisibilities();
     }
 
 
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         // Collect data from the intent and use it
-        setPersonalInfoVisibility();
+        setVisibilities();
     }
 
+    public void setVisibilities(){
+        setPersonalInfoVisibility();
+        setCreatingEmployeeVisibility();
+    }
+
+    public void setCreatingEmployeeVisibility(){
+        if (!localCredentialStore.creatingEmployeeEnabled()) {
+            btnCreateEmployee.setVisibility(View.GONE);
+        }else {
+            btnCreateEmployee.setVisibility(View.VISIBLE);
+        }
+    }
     /*
     public void startPersonalManagementActivity(){
         AlertDialog.Builder alerBuilder = new AlertDialog.Builder(this);

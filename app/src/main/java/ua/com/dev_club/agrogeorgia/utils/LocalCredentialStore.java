@@ -2,6 +2,7 @@ package ua.com.dev_club.agrogeorgia.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.BoringLayout;
 
 public class LocalCredentialStore {
 
@@ -16,6 +17,10 @@ public class LocalCredentialStore {
     private static final String CURRENT_DAY = "CURRENT_DAY";
     private static final String CURRENT_YEAR = "CURRENT_YEAR";
     private static final String CURRENT_MONTH = "CURRENT_MONTH";
+    private static final String CREATING_EMPLOYEE = "CREATING_EMPLOYEE";
+    private static final String USER_LOGIN = "USER_LOGIN";
+    private static final String USER_PASSWORD = "USER_PASSWORD";
+    private static final String REMEMBER_ME = "REMEMBER_ME";
 
     private SharedPreferences prefs;
 
@@ -126,4 +131,43 @@ public class LocalCredentialStore {
         editor.remove(EMPLOYEE_ID);
         editor.commit();
     }
+
+    public Boolean creatingEmployeeEnabled() {
+        Boolean creatingEmployee = prefs.getBoolean(CREATING_EMPLOYEE, false);
+        return creatingEmployee;
+    }
+
+    public void storeCreatingEmployee(Boolean creatingEmployee){
+        Editor editor = prefs.edit();
+        editor.putBoolean(CREATING_EMPLOYEE, creatingEmployee);
+        editor.commit();
+    }
+
+    public void storeUserCredentials(String login, String password) {
+        if (getRememberMe()){
+            Editor editor = prefs.edit();
+            editor.putString(USER_LOGIN, login);
+            editor.putString(USER_PASSWORD, password);
+            editor.commit();
+        }
+    }
+
+    public String getUserLogin() {
+        return getRememberMe() ? prefs.getString(USER_LOGIN, "") : "";
+    }
+
+    public String getUserPassword() {
+        return getRememberMe() ? prefs.getString(USER_PASSWORD, "") : "";
+    }
+
+    public Boolean getRememberMe() {
+        return prefs.getBoolean(REMEMBER_ME, false);
+    }
+
+    public void setRememberMe(Boolean rememberMe) {
+        Editor editor = prefs.edit();
+        editor.putBoolean(REMEMBER_ME, rememberMe);
+        editor.commit();
+    }
+
 }
