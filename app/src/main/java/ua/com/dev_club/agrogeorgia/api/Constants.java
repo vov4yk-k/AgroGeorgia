@@ -49,4 +49,7 @@ public class Constants {
 
     public final static String METHOD_NAME_GET_FIXED_ASSETS = "GetFixedAssets";
 
+    //New employee
+    public final static String POST_NEW_EMPLOYEE_SOAP_ACTION = HOSTNAME + "ws/DirectOneWorkLog.1cws/CreateEmployee";
+    public final static String METHOD_NAME_POST_NEW_EMPLOYEE = "CreateEmployee";
 }

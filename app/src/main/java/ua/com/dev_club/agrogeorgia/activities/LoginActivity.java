@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
     String username;
     String password;
+
     Boolean isAuthorized = false;
     Boolean rememberMe;
 
@@ -499,6 +500,7 @@ public class LoginActivity extends AppCompatActivity {
 
             localCredentialStore.setRememberMe(rememberMe);
             localCredentialStore.storeUserCredentials(username,password);
+            localCredentialStore.setUserId(user.getUserID());
 
             finish();
         }

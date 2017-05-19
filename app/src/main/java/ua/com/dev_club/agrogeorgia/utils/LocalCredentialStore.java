@@ -21,6 +21,7 @@ public class LocalCredentialStore {
     private static final String USER_LOGIN = "USER_LOGIN";
     private static final String USER_PASSWORD = "USER_PASSWORD";
     private static final String REMEMBER_ME = "REMEMBER_ME";
+    private static final String USER_ID = "USER_ID";
 
     private SharedPreferences prefs;
 
@@ -170,4 +171,13 @@ public class LocalCredentialStore {
         editor.commit();
     }
 
+    public String getUserId() {
+        return prefs.getString(USER_ID,"");
+    }
+
+    public void setUserId(String userID) {
+        Editor editor = prefs.edit();
+        editor.putString(USER_ID, userID);
+        editor.commit();
+    }
 }
